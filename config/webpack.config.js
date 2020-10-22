@@ -24,6 +24,12 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const resolveTsconfigPathsToAlias = require('./resolveTsconfigPathsToWebpackAlias.js');
+
+const tsconfigPathAliases = resolveTsconfigPathsToAlias({
+  tsconfigPath: '../tsconfig.json', // Using custom path
+  projectRoot: path.join(__dirname, '../'), // Using custom path
+ })
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -289,6 +295,7 @@ module.exports = function(webpackEnv) {
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
       alias: {
+        ...tsconfigPathAliases,
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
