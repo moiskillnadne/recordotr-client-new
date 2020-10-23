@@ -1,12 +1,32 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
 import './index.css'
-import App from './app'
+
+import React, { useEffect } from 'react'
+import ReactDOM from 'react-dom'
+
+import { Provider, useDispatch } from 'react-redux'
+
 import * as serviceWorker from './serviceWorker'
+
+import store from './redux/store'
+
+const Test = () => {
+  const dsp = useDispatch()
+
+  useEffect((): void => {
+    dsp({
+      type: 'opo',
+      payload: 'sdsd',
+    })
+  }, [])
+
+  return <div />
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Test />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 )
