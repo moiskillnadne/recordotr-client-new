@@ -27,10 +27,13 @@ export type ApiAction<Body = unknown> = {
 
 export type OnStatus<ResponseData = unknown> = (responseData: ResponseData, response: Response) => void
 
-export type ApiOnStatusAction = {
+export type ApiOnStatusAction<ResponseData = unknown> = {
   type: string
   payload: {
-    body?: ResponseBody
+    body?: {
+      data?: ResponseData
+      error?: ''
+    }
     action: ApiAction<ApiActionBody>
     response?: Response
     abortController?: AbortController

@@ -131,7 +131,8 @@ export class Api {
     response,
     abortController,
   }: ActionBuilderParams): ApiOnStatusAction => {
-    const body = isString(responseBody) ? { error: responseBody } : responseBody
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const body = (isString(responseBody) ? { error: responseBody } : responseBody) as any
 
     if (body?.error) {
       if (/The user aborted a request/.test(body.error)) {
