@@ -8,7 +8,7 @@ import immutablePayloadMiddleware from './middlewares/immutablePayload'
 
 import createRootReducer from './reducers'
 
-const api = new Api({})
+const api = new Api()
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 

@@ -4,6 +4,10 @@ export type StageActionTypes = {
   SUCCESS: string
 }
 
+type Errorable = {
+  error: string
+}
+
 export type ApiAction<Body = unknown> = {
   type: string
   url: string
@@ -21,16 +25,12 @@ export type ApiAction<Body = unknown> = {
   query?: any
 }
 
-export type onStatus<ResponseData = unknown> = (responseData: ResponseData, response: Response) => void
+export type OnStatus<ResponseData = unknown> = (responseData: ResponseData, response: Response) => void
 
-export type ApiOnStatusAction<D = unknown, ApiActionBody = unknown> = {
+export type ApiOnStatusAction = {
   type: string
   payload: {
-    body?: {
-      total?: number
-      error?: string
-      data?: D
-    }
+    body?: ResponseBody
     action: ApiAction<ApiActionBody>
     response?: Response
     abortController?: AbortController
@@ -38,5 +38,11 @@ export type ApiOnStatusAction<D = unknown, ApiActionBody = unknown> = {
 }
 
 export type Settings = {
-  hostname?: string
+  onRequestAbort?: () => void
+  onResposeHasError?: () => void
+  refreshActionTypes: StageActionTypes
 }
+
+export type ResBody = UnexpectedServerErrorRes | { error: string }
+
+export type UnexpectedServerErrorRes = string
