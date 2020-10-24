@@ -1,4 +1,8 @@
-import { combineReducers, Reducer } from 'redux'
+import { Reducer } from 'redux'
+
+import produce from 'immer'
+
+import { combineReducers } from 'redux-immer'
 
 import { RootState } from '@/types/state.d'
 
@@ -14,6 +18,6 @@ function importAllReducers(): Record<keyof RootState, Reducer> {
   return allReducers
 }
 
-const createRootReducer = (): Reducer<RootState> => combineReducers<RootState>(importAllReducers())
+const createRootReducer = (): Reducer<RootState> => combineReducers(produce, importAllReducers())
 
 export default createRootReducer

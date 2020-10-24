@@ -28,7 +28,7 @@ export default (state = initialState, { type, payload }: ApiOnStatusAction<UserM
         isLoading: false,
         error: payload?.body?.error || '',
       }
-    case 'j':
+    case 'SET_USER':
       return {
         User: payload.body?.data || state.User,
         error: '',
