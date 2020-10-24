@@ -5,7 +5,7 @@ import { A } from 'hookrouter'
 import { PageRoute } from '@/index/route/type'
 
 const routeProps: PageRoute = {
-  pathNames: ['/'],
+  pathNames: ['/about'],
   Component: (): JSX.Element => <MainPage />,
   footer: false,
   header: false,
@@ -20,7 +20,7 @@ const MainPage: FC<MainPageProps> = ({ text }): JSX.Element => {
     <div className="MainPage">
       MainPage
       {text}
-      <A href="/about">Test</A>
+      <A href="/">Main</A>
     </div>
   )
 }

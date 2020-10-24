@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom'
 
 import { Provider } from 'react-redux'
 
-import Routes from './route/routes'
+import Routes from './route/router'
 
 import * as serviceWorker from './serviceWorker'
 
