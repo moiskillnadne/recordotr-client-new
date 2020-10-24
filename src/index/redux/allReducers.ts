@@ -4,7 +4,7 @@ import produce from 'immer'
 
 import { combineReducers } from 'redux-immer'
 
-import { RootState } from '@/types/state.d'
+import { RootState } from '@/type/state'
 
 function importAllReducers(): Record<keyof RootState, Reducer> {
   const r = require.context('@/store/reducer', true, /\.ts$/)

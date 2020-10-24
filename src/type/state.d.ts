@@ -1,4 +1,4 @@
-import { Errorable } from '@/index/redux/middlewares/api.d'
+import { Errorable } from '@/index/redux/middlewares/api'
 
 import { UserModel } from './model'
 

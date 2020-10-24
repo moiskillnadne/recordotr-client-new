@@ -1,10 +1,10 @@
 import { applyMiddleware, compose, createStore, Store } from 'redux'
 
-import { RootState } from '@/types/state'
+import { RootState } from '@/type/state'
 
 import { Api } from './middlewares/api'
 
-import createRootReducer from './reducers'
+import createRootReducer from './allReducers'
 
 const api = new Api()
 

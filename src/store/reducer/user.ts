@@ -1,8 +1,8 @@
 import { ApiOnStatusAction } from '@/index/redux/middlewares/api.d'
 
-import { UserModel } from '@/types/model'
+import { UserModel } from '@/type/model'
 
-import { UserState } from '@/types/state'
+import { UserState } from '@/type/state'
 
 const initialState: UserState = {
   User: {
