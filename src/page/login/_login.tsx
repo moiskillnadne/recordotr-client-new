@@ -1,16 +1,24 @@
 import React, { FC } from 'react'
 
+import { useDispatch } from 'react-redux'
+
 import { Form, Field } from 'react-final-form'
 
 import { A } from 'hookrouter'
 
+import md5 from 'md5'
+
 import { PageRoute } from '@/index/route/type'
+
+import * as authActions from '@/store/action/auth'
 
 type MainPageProps = {
   text?: 'string'
 }
 
 const MainPage: FC<MainPageProps> = ({ text }): JSX.Element => {
+  const dsp = useDispatch()
+
   return (
     <div className="MainPage">
       LoginPage
@@ -45,9 +53,16 @@ const MainPage: FC<MainPageProps> = ({ text }): JSX.Element => {
     </div>
   )
 
-  function onSubmit(value: unknown) {
+  function onSubmit(value: authActions.LoginReqBody) {
     // eslint-disable-next-line no-console
     console.log(value)
+
+    dsp(
+      authActions.login({ ...value, password: md5(value.password) }, function onSuccess(resData) {
+        // eslint-disable-next-line no-console
+        console.log(resData)
+      }),
+    )
   }
 }
 
