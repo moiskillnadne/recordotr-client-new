@@ -19,8 +19,10 @@ html, body, #root, .Hookrouter {
 
 #root {
   position: relative;
+  overflow: hidden;
 }
 
 .Hookrouter {
   position: absolute;
+  overflow: auto;
 }

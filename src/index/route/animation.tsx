@@ -15,14 +15,20 @@ type RoutesAnimationProps = {
 
 const RoutesAnimation: FC<RoutesAnimationProps> = ({ children, pageSettingsByPath, currentPageId }): JSX.Element => {
   // eslint-disable-next-line no-console
-  console.log(pageSettingsByPath, currentPageId)
+  console.log(pageSettingsByPath[currentPageId])
+
+  const { pageAnimation } = pageSettingsByPath[currentPageId]
 
   return (
     <SwitchTransition mode="in-out">
       <CSSTransition
-        key={children.props.className}
-        timeout={{ enter: 0, exit: 500 }}
-        classNames="Hookrouter"
+        key={currentPageId}
+        timeout={{
+          enter: pageAnimation?.enter || 500,
+          exit: pageAnimation?.exit || 500,
+          appear: pageAnimation?.appear || 0,
+        }}
+        classNames={currentPageId}
         unmountOnExit
       >
         {children}

@@ -1,8 +1,38 @@
-.LoginPage {
+#LoginPage {
   z-index: 1;
   background-color: antiquewhite;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100%;
+}
+
+#LoginPage {
+  padding-top: 10em;
+}
+
+.LoginPage-exit-active {
+  animation-name: toBottom;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+.LoginPage-enter-active {
+  animation-name: toBottom;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-direction: reverse;
+}
+
+@keyframes toBottom {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
 }

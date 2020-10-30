@@ -54,7 +54,7 @@ export default class RouterManager {
     // if (importedRoute.footer !== false) components.push(Footer)
 
     return (
-      <div className={c('Hookrouter')} id={iPageRoute.id}>
+      <div className={c('Hookrouter', iPageRoute.id)} id={iPageRoute.id}>
         {components.map(
           (Component): JSX.Element => (
             // eslint-disable-next-line @typescript-eslint/no-explicit-any

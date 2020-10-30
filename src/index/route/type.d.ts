@@ -11,6 +11,11 @@ export type PageSettings<P = {}> = {
   authorizedOnly?: boolean
   header?: boolean
   footer?: boolean
+  pageAnimation?: {
+    appear?: number
+    enter?: number
+    exit?: number
+  }
 }
 
 export type PageSettingsById = {

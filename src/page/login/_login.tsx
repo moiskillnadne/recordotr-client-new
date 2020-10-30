@@ -74,6 +74,11 @@ const routeProps: PageSettings = {
   Component: (p): JSX.Element => <MainPage {...p} />,
   footer: false,
   header: false,
+  pageAnimation: {
+    enter: 500,
+    exit: 500,
+    appear: 0,
+  },
 }
 
 export default routeProps
