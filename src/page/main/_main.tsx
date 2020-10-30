@@ -10,15 +10,16 @@ type MainPageProps = {
 
 const MainPage: FC<MainPageProps> = ({ text }): JSX.Element => {
   return (
-    <div className="MainPage">
+    <main>
       MainPage
       {text}
       <A href="/login">Login</A>
-    </div>
+    </main>
   )
 }
 
 const routeProps: PageRoute = {
+  className: 'MainPage',
   pathNames: ['/'],
   Component: (): JSX.Element => <MainPage />,
   footer: false,

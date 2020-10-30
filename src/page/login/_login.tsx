@@ -20,7 +20,7 @@ const MainPage: FC<MainPageProps> = ({ text }): JSX.Element => {
   const dsp = useDispatch()
 
   return (
-    <div className="MainPage">
+    <main>
       LoginPage
       {text}
       <A href="/">Main</A>
@@ -50,7 +50,7 @@ const MainPage: FC<MainPageProps> = ({ text }): JSX.Element => {
           </form>
         )}
       />
-    </div>
+    </main>
   )
 
   function onSubmit(value: authActions.LoginReqBody) {
@@ -67,6 +67,7 @@ const MainPage: FC<MainPageProps> = ({ text }): JSX.Element => {
 }
 
 const routeProps: PageRoute = {
+  className: 'LoginPage',
   pathNames: ['/login'],
   Component: (): JSX.Element => <MainPage />,
   footer: false,

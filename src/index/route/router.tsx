@@ -6,6 +6,8 @@ import NotFound from '@/page/notFound/notFound'
 
 import RouterManager from './routerManager'
 
+import Animation from './animation'
+
 import allRoutes from './allRoutes'
 
 const Router: FC = (): JSX.Element => {
@@ -15,7 +17,7 @@ const Router: FC = (): JSX.Element => {
 
   const routeResult = useRoutes(routes)
 
-  return <>{routeResult || <NotFound />}</>
+  return <Animation>{routeResult || <NotFound />}</Animation>
 }
 
 export default Router
