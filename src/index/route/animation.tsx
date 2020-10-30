@@ -13,7 +13,7 @@ type RoutesAnimationProps = {
 const RoutesAnimation: FC<RoutesAnimationProps> = ({ children }): JSX.Element => {
   return (
     <SwitchTransition mode="in-out">
-      <CSSTransition key={children.props.className} timeout={5000} classNames="Hookrouter" unmountOnExit>
+      <CSSTransition key={children.props.className} timeout={50000} classNames="Hookrouter" unmountOnExit>
         {children}
       </CSSTransition>
     </SwitchTransition>
