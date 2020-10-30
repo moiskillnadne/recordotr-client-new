@@ -6,13 +6,16 @@ import { HookRouter } from 'hookrouter'
 
 import c from 'clsx'
 
-import { PageRoute } from './type'
+import { PageSettings, PageSettingsById } from './type'
 
 export default class RouterManager {
-  pageRoutes: PageRoute[]
+  public readonly pageRoutes: PageSettings[]
 
-  constructor(pageRoutes: PageRoute[]) {
+  public readonly pageSettingsById: PageSettingsById
+
+  constructor(pageRoutes: PageSettings[]) {
     this.pageRoutes = pageRoutes
+    this.pageSettingsById = {}
   }
 
   get routes(): HookRouter.RouteObject {
@@ -24,15 +27,22 @@ export default class RouterManager {
       for (let ni = 0; ni < iPageRoute.pathNames.length; ni += 1) {
         const iPathName = iPageRoute.pathNames[ni]
 
-        routes[iPathName] = (params: Record<string, string>): JSX.Element =>
-          this.getComponent(iPageRoute, params, iPathName)
+        this.pageSettingsById[iPageRoute.id] = iPageRoute
+
+        routes[iPathName] = (params: Record<string, string>): JSX.Element => {
+          return this.getComponent(iPageRoute, params, iPathName)
+        }
       }
     }
 
     return routes
   }
 
-  private getComponent = (iPageRoute: PageRoute, params: { [key: string]: string }, iPathName: string): JSX.Element => {
+  private getComponent = (
+    iPageRoute: PageSettings,
+    params: { [key: string]: string },
+    iPathName: string,
+  ): JSX.Element => {
     // if (importedRoute.authorizedOnly && !isAuthorized()) {
     //   navigate('/login')
     //   return getComponent(importedRoutes.find((r) => r.name === 'Login') as PageRoute, params)
@@ -44,10 +54,11 @@ export default class RouterManager {
     // if (importedRoute.footer !== false) components.push(Footer)
 
     return (
-      <div className={c('Hookrouter', iPageRoute.className)}>
+      <div className={c('Hookrouter')} id={iPageRoute.id}>
         {components.map(
           (Component): JSX.Element => (
-            <Component key={iPathName} {...params} />
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            <Component key={iPathName} {...params} page={iPageRoute as any} />
           ),
         )}
       </div>

@@ -11,13 +11,17 @@ import Animation from './animation'
 import allRoutes from './allRoutes'
 
 const Router: FC = (): JSX.Element => {
-  const routerManager = new RouterManager(allRoutes)
+  const routerManager = useMemo(() => new RouterManager(allRoutes), [allRoutes])
 
   const routes = useMemo(() => routerManager.routes, [allRoutes])
 
   const routeResult = useRoutes(routes)
 
-  return <Animation>{routeResult || <NotFound />}</Animation>
+  return (
+    <Animation pageSettingsByPath={routerManager.pageSettingsById} currentPageId={routeResult.props.id}>
+      {routeResult || <NotFound />}
+    </Animation>
+  )
 }
 
 export default Router

@@ -1,7 +1,8 @@
-export type PageRoute<P = {}> = {
+export type PageSettings<P = {}> = {
+  id: string
   name?: string
   Component: (params: Record<string, string>) => JSX.Element
-  className: string
+  className?: string
   componentProps?: P
   exact?: boolean
   redirect?: string
@@ -10,4 +11,8 @@ export type PageRoute<P = {}> = {
   authorizedOnly?: boolean
   header?: boolean
   footer?: boolean
+}
+
+export type PageSettingsById = {
+  [path: string]: PageSettings
 }

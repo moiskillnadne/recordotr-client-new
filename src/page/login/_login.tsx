@@ -1,3 +1,5 @@
+import './_login.css'
+
 import React, { FC } from 'react'
 
 import { useDispatch } from 'react-redux'
@@ -8,7 +10,7 @@ import { A } from 'hookrouter'
 
 import md5 from 'md5'
 
-import { PageRoute } from '@/index/route/type'
+import { PageSettings } from '@/index/route/type'
 
 import * as authActions from '@/store/action/auth'
 
@@ -66,10 +68,10 @@ const MainPage: FC<MainPageProps> = ({ text }): JSX.Element => {
   }
 }
 
-const routeProps: PageRoute = {
-  className: 'LoginPage',
+const routeProps: PageSettings = {
+  id: 'LoginPage',
   pathNames: ['/login'],
-  Component: (): JSX.Element => <MainPage />,
+  Component: (p): JSX.Element => <MainPage {...p} />,
   footer: false,
   header: false,
 }

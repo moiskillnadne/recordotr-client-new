@@ -2,24 +2,19 @@ import React, { FC } from 'react'
 
 import { A } from 'hookrouter'
 
-import { PageRoute } from '@/index/route/type'
+import { PageSettings } from '@/index/route/type'
 
-type MainPageProps = {
-  text?: 'string'
-}
-
-const MainPage: FC<MainPageProps> = ({ text }): JSX.Element => {
+const MainPage: FC = (): JSX.Element => {
   return (
-    <main>
+    <main className="MainPage">
       MainPage
-      {text}
       <A href="/login">Login</A>
     </main>
   )
 }
 
-const routeProps: PageRoute = {
-  className: 'MainPage',
+const routeProps: PageSettings = {
+  id: 'MainPage',
   pathNames: ['/'],
   Component: (): JSX.Element => <MainPage />,
   footer: false,

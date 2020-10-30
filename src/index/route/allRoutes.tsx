@@ -1,9 +1,9 @@
-import { PageRoute } from './type'
+import { PageSettings } from './type'
 
-function allRoutes(): PageRoute[] {
+function allRoutes(): PageSettings[] {
   const r = require.context('@/', true, /page\/(.)+\/_(.)+\.tsx$/)
 
-  const pageRoutes: PageRoute[] = []
+  const pageRoutes: PageSettings[] = []
 
   r.keys().forEach((key) => {
     pageRoutes.push(r(key).default)
