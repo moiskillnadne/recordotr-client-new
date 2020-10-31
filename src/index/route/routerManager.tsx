@@ -6,6 +6,9 @@ import { HookRouter } from 'hookrouter'
 
 import c from 'clsx'
 
+import Header from '@/components/header/_header'
+import Footer from '@/components/footer/_footer'
+
 import { PageSettings, PageSettingsById } from './type'
 
 export default class RouterManager {
@@ -43,18 +46,24 @@ export default class RouterManager {
     params: { [key: string]: string },
     iPathName: string,
   ): JSX.Element => {
+    const withHeader = iPageRoute.header !== false
+    const withFooter = iPageRoute.footer !== false
+
     // if (importedRoute.authorizedOnly && !isAuthorized()) {
     //   navigate('/login')
     //   return getComponent(importedRoutes.find((r) => r.name === 'Login') as PageRoute, params)
     // }
 
     const components = []
-    // if (importedRoute.header !== false) components.push(Header)
+    if (withHeader) components.push(Header)
     components.push(iPageRoute.Component)
-    // if (importedRoute.footer !== false) components.push(Footer)
+    if (withFooter) components.push(Footer)
 
     return (
-      <div className={c('Hookrouter', iPageRoute.id)} id={iPageRoute.id}>
+      <div
+        className={c('Hookrouter', iPageRoute.id, withHeader && 'withHeader', withFooter && 'withFooter')}
+        id={iPageRoute.id}
+      >
         {components.map(
           (Component): JSX.Element => (
             // eslint-disable-next-line @typescript-eslint/no-explicit-any

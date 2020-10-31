@@ -1,0 +1,7 @@
+.Header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: var(--headerHeight);
+  background: green;
+}

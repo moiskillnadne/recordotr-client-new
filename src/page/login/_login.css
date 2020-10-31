@@ -7,10 +7,6 @@
   height: 100%;
 }
 
-#LoginPage {
-  padding-top: 10em;
-}
-
 .LoginPage-exit-active {
   animation-name: toBottom;
   animation-duration: 0.5s;

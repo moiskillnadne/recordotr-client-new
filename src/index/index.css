@@ -12,17 +12,38 @@ code {
     monospace;
 }
 
-html, body, #root, .Hookrouter {
-  width: 100%;
+html,
+body {
   height: 100%;
+  overflow: hidden;
+
+  --footerHeight: 5em;
+  --headerHeight: 5em;
+}
+
+section {
+  margin: 0 1em
 }
 
 #root {
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  overflow-y: scroll;
+  padding-right: 17px;
+  box-sizing: content-box;
+  min-height: 100%;
 }
 
 .Hookrouter {
+  min-height: calc(100% - var(--footerHeight) - var(--headerHeight));
+  width: 100vw;
   position: absolute;
-  overflow: auto;
+}
+
+.withFooter {
+  padding-bottom: var(--footerHeight);
+}
+
+.withHeader {
+  padding-top: var(--headerHeight);
 }
