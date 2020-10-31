@@ -7,7 +7,11 @@ import { A } from 'hookrouter'
 const Header: FC = (): JSX.Element => {
   return (
     <header className="Header">
-      <A href="/login">Login</A>
+      <div className="headerContainer">
+        <A href="/login">
+          <button type="button">Login</button>
+        </A>
+      </div>
     </header>
   )
 }

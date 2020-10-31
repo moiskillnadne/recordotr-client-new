@@ -1,7 +1,16 @@
 .Header {
   position: absolute;
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: var(--headerHeight);
-  background: green;
+  background-color: var(--bg);
+
+}
+
+.headerContainer {
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 2em;
 }

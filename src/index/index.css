@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 10px;
 }
 
 code {
@@ -16,18 +17,40 @@ html,
 body {
   height: 100%;
   overflow: hidden;
+  color: var(--color);
 
   --footerHeight: 5em;
   --headerHeight: 5em;
+  --bg: #1e1f26;
+  --bgDark: #101115;
+  --color: #e2e8eb;
+  --linkColor: #b0e4b4;
+}
+
+a {
+  color: var(--linkColor);
 }
 
 section {
   margin: 0 1em
 }
 
+button {
+  border-radius: .5em;
+  background: var(--linkColor);
+  border: 0;
+  padding: .3em 3em;
+  cursor: pointer;
+  outline:none;
+}
+
+button:active {
+  border: 0;
+}
+
 #root {
   position: relative;
-  width: 100%;
+  width: 100vw;
   overflow-y: scroll;
   padding-right: 17px;
   box-sizing: content-box;
@@ -38,6 +61,7 @@ section {
   min-height: calc(100% - var(--footerHeight) - var(--headerHeight));
   width: 100vw;
   position: absolute;
+  background-color: var(--bgDark);
 }
 
 .withFooter {
