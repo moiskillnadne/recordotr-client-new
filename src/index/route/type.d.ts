@@ -15,6 +15,7 @@ export type PageSettings<P = {}> = {
     appear?: number
     enter?: number
     exit?: number
+    nextEnter?: number
   }
 }
 

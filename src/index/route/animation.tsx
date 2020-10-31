@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useRef } from 'react'
 
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { PageSettingsById } from './type'
@@ -14,17 +14,20 @@ type RoutesAnimationProps = {
 }
 
 const RoutesAnimation: FC<RoutesAnimationProps> = ({ children, pageSettingsByPath, currentPageId }): JSX.Element => {
-  // eslint-disable-next-line no-console
-  console.log(pageSettingsByPath[currentPageId])
+  const pageAnimation = pageSettingsByPath?.[currentPageId]?.pageAnimation
 
-  const { pageAnimation } = pageSettingsByPath[currentPageId]
+  const prevPageAnimation = useRef(pageAnimation)
+
+  const prevNextEnter = prevPageAnimation.current?.nextEnter
+
+  prevPageAnimation.current = pageAnimation
 
   return (
     <SwitchTransition mode="in-out">
       <CSSTransition
         key={currentPageId}
         timeout={{
-          enter: pageAnimation?.enter || 500,
+          enter: prevNextEnter === 0 ? 0 : prevNextEnter || pageAnimation?.enter || 500,
           exit: pageAnimation?.exit || 500,
           appear: pageAnimation?.appear || 0,
         }}

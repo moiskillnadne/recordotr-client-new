@@ -25,7 +25,7 @@ const MainPage: FC<MainPageProps> = ({ text }): JSX.Element => {
     <main>
       LoginPage
       {text}
-      <A href="/">Main</A>
+      <A href="/main">Main</A>
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
@@ -78,6 +78,7 @@ const routeProps: PageSettings = {
     enter: 500,
     exit: 500,
     appear: 0,
+    nextEnter: 0,
   },
 }
 

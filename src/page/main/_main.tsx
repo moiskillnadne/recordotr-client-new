@@ -12,7 +12,7 @@ const MainPage: FC = (): JSX.Element => {
 
 const routeProps: PageSettings = {
   id: 'MainPage',
-  pathNames: ['/'],
+  pathNames: ['/main'],
   Component: (): JSX.Element => <MainPage />,
   pageAnimation: {
     enter: 500,

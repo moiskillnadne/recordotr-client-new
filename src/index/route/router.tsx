@@ -18,7 +18,7 @@ const Router: FC = (): JSX.Element => {
   const routeResult = useRoutes(routes)
 
   return (
-    <Animation pageSettingsByPath={routerManager.pageSettingsById} currentPageId={routeResult.props.id}>
+    <Animation pageSettingsByPath={routerManager.pageSettingsById} currentPageId={routeResult?.props.id || 'notFound'}>
       {routeResult || <NotFound />}
     </Animation>
   )
